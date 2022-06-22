@@ -1,10 +1,11 @@
 require 'handlebars/source'
-require 'v8'
+# require 'v8'
+require 'mini_racer'
 
 module Handlebars
   class Context
     def initialize
-      @js = V8::Context.new
+      @js = MiniRacer::Context.new
       @js['global'] = {} # there may be a more appropriate object to be used here @MHW
       @js.load(Handlebars::Source.bundled_path)
 
